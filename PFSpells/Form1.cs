@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -35,7 +36,7 @@ namespace PFSpells
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        async private void button1_Click(object sender, EventArgs e)
         {
             button1.Enabled = false;
             Cursor.Current = Cursors.WaitCursor;
@@ -49,6 +50,7 @@ namespace PFSpells
             writer.WriteLine("</head>");
             writer.WriteLine("<body>");
 
+            HtmlWeb web = new HtmlWeb();
             foreach (string name in spellNames)
             {
                 string nameForURL = Regex.Replace(name, "[^0-9a-zA-Z' ]", "");
@@ -56,11 +58,35 @@ namespace PFSpells
                 string url = "https://www.d20pfsrd.com/magic/all-spells/" + nameForURL[0] + "/" + nameForURL;
                 url = url.ToLower();
 
-                HtmlWeb web = new HtmlWeb();
                 HtmlAgilityPack.HtmlDocument htmlDoc = web.Load(url);
                 HtmlNode spellNode = htmlDoc.DocumentNode.SelectSingleNode("//div[contains(@class, 'article-content')]");
                 if (spellNode == null)
-                    continue;
+                {
+                    nameForURL = name.ToLower();
+                    string[] toRemove = { ", greater", ", lesser", ", communal", ", mass" };
+
+                    foreach (string term in toRemove)
+                    {
+                        if (nameForURL.Contains(term))
+                        {
+                            nameForURL = nameForURL.Remove(nameForURL.IndexOf(term), term.Length);
+                        }
+                    }
+
+                    string[] levelRemovals = { " I", " II", " III", " IV", " V", " VI", " VII", " VIII", " IX" };
+                    foreach (string term in levelRemovals)
+                    { 
+                        if (nameForURL.Contains(term.ToLower()))
+                        {
+                            nameForURL = nameForURL.Remove(nameForURL.IndexOf(term.ToLower()), term.Length);
+                            break;
+                        }
+                    }
+
+                    url = "https://www.d20pfsrd.com/magic/all-spells/" + nameForURL[0] + "/" + nameForURL;
+                    htmlDoc = web.Load(url);
+                    spellNode = htmlDoc.DocumentNode.SelectSingleNode("//div[contains(@class, 'article-content')]");
+                }
                 HtmlNode productNode = htmlDoc.DocumentNode.SelectSingleNode("//div[contains(@class, 'product-right')]");
                 if (productNode != null)
                     productNode.Remove();

@@ -61,18 +61,29 @@ namespace PFSpells
                 HtmlNode spellNode = htmlDoc.DocumentNode.SelectSingleNode("//div[contains(@class, 'article-content')]");
                 if (spellNode == null)
                 {
-                    nameForURL = Regex.Replace(name, "[^0-9a-zA-Z' ]", "");
-                    url = "https://cse.google.com/cse?cx=006680642033474972217%3A6zo0hx_wle8&q=" + nameForURL + "#gsc.tab=0&gsc.q=" + nameForURL + "&gsc.ref=more%3Aspells&gsc.sort=";
+                    nameForURL = name.ToLower();
+                    string[] toRemove = { ", greater", ", lesser", ", communal", ", mass" };
 
-                    HttpClient client = new HttpClient();
-                    string body = await client.GetStringAsync(url);
+                    foreach (string term in toRemove)
+                    {
+                        if (nameForURL.Contains(term))
+                        {
+                            nameForURL = nameForURL.Remove(nameForURL.IndexOf(term), term.Length);
+                        }
+                    }
 
-                    HtmlAgilityPack.HtmlDocument searchDoc = new HtmlAgilityPack.HtmlDocument();
-                    searchDoc.LoadHtml(body);
+                    string[] levelRemovals = { " I", " II", " III", " IV", " V", " VI", " VII", " VIII", " IX" };
+                    foreach (string term in levelRemovals)
+                    { 
+                        if (nameForURL.Contains(term.ToLower()))
+                        {
+                            nameForURL = nameForURL.Remove(nameForURL.IndexOf(term.ToLower()), term.Length);
+                            break;
+                        }
+                    }
 
-                    searchDoc.Save("./html.html");
-                    HtmlNode linkNode = searchDoc.DocumentNode.SelectSingleNode("//a[contains(@class, 'gs-title')]");
-                    htmlDoc = web.LoadFromBrowser(url);
+                    url = "https://www.d20pfsrd.com/magic/all-spells/" + nameForURL[0] + "/" + nameForURL;
+                    htmlDoc = web.Load(url);
                     spellNode = htmlDoc.DocumentNode.SelectSingleNode("//div[contains(@class, 'article-content')]");
                 }
                 HtmlNode productNode = htmlDoc.DocumentNode.SelectSingleNode("//div[contains(@class, 'product-right')]");

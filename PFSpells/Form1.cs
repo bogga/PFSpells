@@ -61,7 +61,7 @@ namespace PFSpells
                 if (spellNode == null)
                 {
                     nameForURL = Regex.Replace(name, "[^0-9a-zA-Z' ]", "");
-                    url = "https://cse.google.com/cse?cx=006680642033474972217%3A6zo0hx_wle8&q=" + nameForURL + "#gsc.tab=0&gsc.q=" + nameForURL + "&gsc.page=1";
+                    url = "https://cse.google.com/cse?cx=006680642033474972217%3A6zo0hx_wle8&q=" + nameForURL + "#gsc.tab=0&gsc.q=" + nameForURL + "&gsc.ref=more%3Aspells&gsc.sort=";
                     WebBrowser wb = new WebBrowser();
                     wb.Navigate(url);
                     while (wb.ReadyState != WebBrowserReadyState.Complete)

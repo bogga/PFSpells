@@ -38,6 +38,7 @@ namespace PFSpells
         private void button1_Click(object sender, EventArgs e)
         {
             button1.Enabled = false;
+            Cursor.Current = Cursors.WaitCursor;
             string[] spellNames = textBox1.Lines;
             string charName = textBox2.Lines[0];
             StringWriter writer = new StringWriter();
@@ -70,10 +71,10 @@ namespace PFSpells
             writer.WriteLine("</body>");
             writer.WriteLine("</html>");
 
-            var addr = @"./chars/";
             Directory.CreateDirectory(@"./chars/");
             File.WriteAllText(@"./chars/" + charName + ".html", writer.ToString());
             button1.Enabled = true;
+            Cursor.Current = Cursors.Default;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

@@ -48,6 +48,7 @@ namespace PFSpells
             writer.WriteLine("</head>");
             writer.WriteLine("<body>");
 
+            HtmlWeb web = new HtmlWeb();
             foreach (string name in spellNames)
             {
                 string nameForURL = Regex.Replace(name, "[^0-9a-zA-Z' ]", "");
@@ -55,11 +56,23 @@ namespace PFSpells
                 string url = "https://www.d20pfsrd.com/magic/all-spells/" + nameForURL[0] + "/" + nameForURL;
                 url = url.ToLower();
 
-                HtmlWeb web = new HtmlWeb();
                 HtmlAgilityPack.HtmlDocument htmlDoc = web.Load(url);
                 HtmlNode spellNode = htmlDoc.DocumentNode.SelectSingleNode("//div[contains(@class, 'article-content')]");
                 if (spellNode == null)
-                    continue;
+                {
+                    nameForURL = Regex.Replace(name, "[^0-9a-zA-Z' ]", "");
+                    url = "https://cse.google.com/cse?cx=006680642033474972217%3A6zo0hx_wle8&q=" + nameForURL + "#gsc.tab=0&gsc.q=" + nameForURL + "&gsc.page=1";
+                    WebBrowser wb = new WebBrowser();
+                    wb.Navigate(url);
+                    while (wb.ReadyState != WebBrowserReadyState.Complete)
+                        Application.DoEvents();
+                    HtmlAgilityPack.HtmlDocument searchDoc = new HtmlAgilityPack.HtmlDocument();
+                    searchDoc.LoadHtml(wb.DocumentText);
+                    searchDoc.Save("./html.html");
+                    HtmlNode linkNode = searchDoc.DocumentNode.SelectSingleNode("//a[contains(@class, 'gs-title')]");
+                    htmlDoc = web.LoadFromBrowser(url);
+                    spellNode = htmlDoc.DocumentNode.SelectSingleNode("//div[contains(@class, 'article-content')]");
+                }
                 HtmlNode productNode = htmlDoc.DocumentNode.SelectSingleNode("//div[contains(@class, 'product-right')]");
                 if (productNode != null)
                     productNode.Remove();

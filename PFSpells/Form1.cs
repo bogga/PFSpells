@@ -101,8 +101,14 @@ namespace PFSpells
             writer.WriteLine("</body>");
             writer.WriteLine("</html>");
 
+            var addr = @"./chars/" + charName + ".html";
             Directory.CreateDirectory(@"./chars/");
-            File.WriteAllText(@"./chars/" + charName + ".html", writer.ToString());
+            File.WriteAllText(addr, writer.ToString());
+            if (checkBox1.Checked)
+            {
+                string fullpath = new FileInfo(addr).FullName;
+                System.Diagnostics.Process.Start("file:///" + fullpath);
+            }
             button1.Enabled = true;
             Cursor.Current = Cursors.Default;
         }
@@ -113,6 +119,11 @@ namespace PFSpells
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
         }

@@ -100,7 +100,7 @@ namespace PFSpells
                 HtmlNode productNode = htmlDoc.DocumentNode.SelectSingleNode("//div[contains(@class, 'product-right')]");
                 if (productNode != null)
                     productNode.Remove();
-                writer.WriteLine("<h1 onclick=\"show(" + i + ")\">" + name + "</h1>");
+                writer.WriteLine("<h1 class=\"spell-name\" onclick=\"show(" + i + ")\">" + name + "</h1>");
                 writer.WriteLine("<div id=" + i + ">");
                 spellNode.WriteTo(writer);
                 writer.WriteLine("</div>");

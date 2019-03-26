@@ -47,12 +47,14 @@ namespace PFSpells
             writer.WriteLine("<html>");
             writer.WriteLine("<head>");
             writer.WriteLine("<title>" + charName + "</title>");
+            writer.WriteLine("<script>function show(id){var x=document.getElementById(id);if(x.style.display===\"none\"){x.style.display=\"block\"}else{x.style.display=\"none\"}}</script>");
             writer.WriteLine("</head>");
             writer.WriteLine("<body>");
 
             HtmlWeb web = new HtmlWeb();
-            foreach (string name in spellNames)
+            for (int i = 0; i < spellNames.Length; i++)
             {
+                string name = spellNames[i];
                 string nameForURL = Regex.Replace(name, "[^0-9a-zA-Z' ]", "");
                 nameForURL = Regex.Replace(nameForURL, "[' ]", "-");
                 string url = "https://www.d20pfsrd.com/magic/all-spells/" + nameForURL[0] + "/" + nameForURL;
@@ -90,8 +92,10 @@ namespace PFSpells
                 HtmlNode productNode = htmlDoc.DocumentNode.SelectSingleNode("//div[contains(@class, 'product-right')]");
                 if (productNode != null)
                     productNode.Remove();
-                writer.WriteLine("<h1>" + name + "</h1>");
+                writer.WriteLine("<h1 onclick=\"show(" + i + ")\">" + name + "</h1>");
+                writer.WriteLine("<div id=" + i + ">");
                 spellNode.WriteTo(writer);
+                writer.WriteLine("</div>");
             }
 
             writer.WriteLine("</body>");

@@ -8,6 +8,6 @@ Think of every time you've come across a wizard NPC who has 30 spells, some of w
 
 ## How to run
 1. Go to releases (https://github.com/bogga/PFSpells/releases)
-2. Find the latest build
+2. Find the latest build (https://github.com/bogga/PFSpells/releases/latest)
 3. Download the source code (called PFSpells.zip)
 4. Extract and run PFSpells.exe!

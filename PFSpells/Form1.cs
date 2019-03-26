@@ -57,7 +57,15 @@ namespace PFSpells
                 string name = spellNames[i];
                 string nameForURL = Regex.Replace(name, "[^0-9a-zA-Z' ]", "");
                 nameForURL = Regex.Replace(nameForURL, "[' ]", "-");
-                string url = "https://www.d20pfsrd.com/magic/all-spells/" + nameForURL[0] + "/" + nameForURL;
+                string url;
+                try
+                {
+                    url = "https://www.d20pfsrd.com/magic/all-spells/" + nameForURL[0] + "/" + nameForURL;
+                }
+                catch (IndexOutOfRangeException)
+                {
+                    continue;
+                }
                 url = url.ToLower();
 
                 HtmlAgilityPack.HtmlDocument htmlDoc = web.Load(url);

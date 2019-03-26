@@ -47,6 +47,13 @@ namespace PFSpells
             writer.WriteLine("<html>");
             writer.WriteLine("<head>");
             writer.WriteLine("<title>" + charName + "</title>");
+            writer.WriteLine("<link rel='stylesheet' id='ogncustom-css-css'  href='https://www.d20pfsrd.com/wp-content/plugins/ogncustom/css/ogncustom.css?ver=1551434665' type='text/css' media='all' />");
+            writer.WriteLine("<link rel='stylesheet' id='toc-screen-css'  href='https://www.d20pfsrd.com/wp-content/plugins/table-of-contents-plus/screen.min.css?ver=1509' type='text/css' media='all' />");
+            writer.WriteLine("<link rel='stylesheet' id='quickstrap-css'  href='https://www.d20pfsrd.com/wp-content/themes/quickstrap/style.css?ver=741751694b0c23cb369738b3058aae5a' type='text/css' media='all' />");
+            writer.WriteLine("<link rel='stylesheet' id='child-style-css'  href='https://www.d20pfsrd.com/wp-content/themes/srdtheme/css/style.css?ver=1.5.2.7' type='text/css' media='all' />");
+            writer.WriteLine("<link rel='stylesheet' id='quickstrap-bootstrap-css'  href='https://www.d20pfsrd.com/wp-content/themes/quickstrap/css/bootstrap.min.css?ver=3.3.6' type='text/css' media='all' />");
+            writer.WriteLine("<link rel='stylesheet' id='child-dynamic-css'  href='https://www.d20pfsrd.com/wp-content/themes/srdtheme/css/sites/12.css?ver=1546817288' type='text/css' media='all' />");
+            writer.WriteLine("<link rel='stylesheet' id='quickstrap-fontawesome-css'  href='https://www.d20pfsrd.com/wp-content/themes/quickstrap/font-awesome/css/font-awesome.min.css?ver=4.5.0' type='text/css' media='all' />");
             writer.WriteLine("<script>function show(id){var x=document.getElementById(id);if(x.style.display===\"none\"){x.style.display=\"block\"}else{x.style.display=\"none\"}}</script>");
             writer.WriteLine("</head>");
             writer.WriteLine("<body>");

@@ -125,7 +125,7 @@ namespace PFSpells
 
             ErrorWindow w = new ErrorWindow(failedSpells);
             if (failedSpells.Count > 0)
-                w.Show();
+                w.Show(); w.Focus();
 
             var addr = @"./chars/" + charName + ".html";
             Directory.CreateDirectory(@"./chars/");

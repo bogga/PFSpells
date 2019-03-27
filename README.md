@@ -11,3 +11,6 @@ Think of every time you've come across a wizard NPC who has 30 spells, some of w
 2. Find the latest build (https://github.com/bogga/PFSpells/releases/latest)
 3. Download the source code (called PFSpells.zip)
 4. Extract and run PFSpells.exe!
+
+## Acknowledgements
+Thanks to d20pfsrd for providing fantastic, continual docs for Pathfinder!

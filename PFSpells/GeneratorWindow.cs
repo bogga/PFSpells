@@ -14,9 +14,9 @@ using System.Windows.Forms;
 
 namespace PFSpells
 {
-    public partial class Form1 : Form
+    public partial class GeneratorWindow : Form
     {
-        public Form1()
+        public GeneratorWindow()
         {
             InitializeComponent();
         }

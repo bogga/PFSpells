@@ -38,6 +38,7 @@ namespace PFSpells
 
         private void button1_Click(object sender, EventArgs e)
         {
+            progressBar1.Value = 0;
             button1.Enabled = false;
             Cursor.Current = Cursors.WaitCursor;
             string[] spellNames = textBox1.Lines;
@@ -59,7 +60,8 @@ namespace PFSpells
             writer.WriteLine("<body>");
 
             HtmlWeb web = new HtmlWeb();
-            for (int i = 0; i < spellNames.Length; i++)
+            List<string> failedSpells = new List<string>();
+            for (int i = 0; i < spellNames.Length; i++, progressBar1.Increment(((i + 1) / spellNames.Length) * 100))
             {
                 string name = spellNames[i];
                 string nameForURL = Regex.Replace(name, "[^0-9a-zA-Z' ]", "");
@@ -103,6 +105,11 @@ namespace PFSpells
                     url = "https://www.d20pfsrd.com/magic/all-spells/" + nameForURL[0] + "/" + nameForURL;
                     htmlDoc = web.Load(url);
                     spellNode = htmlDoc.DocumentNode.SelectSingleNode("//div[contains(@class, 'article-content')]");
+                    if (spellNode == null)
+                    {
+                        failedSpells.Add(name);
+                        continue;
+                    }
                 }
                 HtmlNode productNode = htmlDoc.DocumentNode.SelectSingleNode("//div[contains(@class, 'product-right')]");
                 if (productNode != null)
@@ -115,6 +122,10 @@ namespace PFSpells
 
             writer.WriteLine("</body>");
             writer.WriteLine("</html>");
+
+            ErrorWindow w = new ErrorWindow(failedSpells);
+            if (failedSpells.Count > 0)
+                w.Show();
 
             var addr = @"./chars/" + charName + ".html";
             Directory.CreateDirectory(@"./chars/");

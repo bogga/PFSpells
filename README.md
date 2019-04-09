@@ -11,6 +11,9 @@ Think of every time you've come across a wizard NPC who has 30 spells, some of w
 3. Download the compiled code (called PFSpells.zip)
 4. Extract and run PFSpells.exe!
 
+## Enhancements & Issues
+If you have any suggestions or find any bugs with this, please add them to the Issues tab (https://github.com/bogga/PFSpells/issues)
+
 ## Acknowledgements
 All spells, concepts and mechanics found in the spell descriptions belong to Paizo - the world's greatest game designers
 Thanks to d20pfsrd for providing continued, fantastic docs for Pathfinder!

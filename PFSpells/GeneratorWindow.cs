@@ -64,8 +64,8 @@ namespace PFSpells
             for (int i = 0; i < spellNames.Length; i++, progressBar1.Increment(((i + 1) / spellNames.Length) * 100))
             {
                 string name = spellNames[i];
-                string nameForURL = Regex.Replace(name, "[^0-9a-zA-Z' ]", "");
-                nameForURL = Regex.Replace(nameForURL, "[' ]", "-");
+                string nameForURL = Regex.Replace(name, "[^0-9a-zA-Z'’ ]", "");
+                nameForURL = Regex.Replace(nameForURL, "['’ ]", "-");
                 string url;
                 try
                 {
@@ -129,11 +129,15 @@ namespace PFSpells
 
             var addr = @"./chars/" + charName + ".html";
             Directory.CreateDirectory(@"./chars/");
-            File.WriteAllText(addr, writer.ToString());
-            if (checkBox1.Checked)
+            bool failedAll = failedSpells.Count == spellNames.Length;
+            if (!failedAll)
             {
-                string fullpath = new FileInfo(addr).FullName;
-                System.Diagnostics.Process.Start("file:///" + fullpath);
+                File.WriteAllText(addr, writer.ToString());
+                if (checkBox1.Checked)
+                {
+                    string fullpath = new FileInfo(addr).FullName;
+                    System.Diagnostics.Process.Start("file:///" + fullpath);
+                }
             }
             button1.Enabled = true;
             Cursor.Current = Cursors.Default;

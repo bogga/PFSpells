@@ -15,7 +15,7 @@ namespace PFSpells
         public ErrorWindow(List<string> failedSpells)
         {
             InitializeComponent();
-            string combined = String.Join(", ", failedSpells.ToArray());
+            string combined = String.Join(",\n", failedSpells.ToArray());
             label3.Text = combined;
             if (failedSpells.Count == 1)
                 label2.Text = "The following spell failed";

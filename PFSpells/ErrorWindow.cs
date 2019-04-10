@@ -15,8 +15,8 @@ namespace PFSpells
         public ErrorWindow(List<string> failedSpells)
         {
             InitializeComponent();
-            string combined = String.Join(",\n", failedSpells.ToArray());
-            label3.Text = combined;
+            string combined = String.Join(",\r\n", failedSpells.ToArray());
+            textBox1.Text = combined;
             if (failedSpells.Count == 1)
                 label2.Text = "The following spell failed";
         }
@@ -27,6 +27,11 @@ namespace PFSpells
         }
 
         private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
         {
 
         }

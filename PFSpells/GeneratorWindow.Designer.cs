@@ -38,8 +38,8 @@
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.aonRadio = new System.Windows.Forms.RadioButton();
             this.d20Radio = new System.Windows.Forms.RadioButton();
+            this.aonRadio = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,6 +78,7 @@
             this.textBox1.Location = new System.Drawing.Point(18, 126);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox1.Size = new System.Drawing.Size(238, 78);
             this.textBox1.TabIndex = 4;
             this.textBox1.Text = "Magic Missile\r\nFireball";
@@ -130,17 +131,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Data Source";
             // 
-            // aonRadio
-            // 
-            this.aonRadio.AutoSize = true;
-            this.aonRadio.Location = new System.Drawing.Point(7, 20);
-            this.aonRadio.Name = "aonRadio";
-            this.aonRadio.Size = new System.Drawing.Size(109, 17);
-            this.aonRadio.TabIndex = 0;
-            this.aonRadio.TabStop = true;
-            this.aonRadio.Text = "Archive of Nethys";
-            this.aonRadio.UseVisualStyleBackColor = true;
-            // 
             // d20Radio
             // 
             this.d20Radio.AutoSize = true;
@@ -151,6 +141,17 @@
             this.d20Radio.TabStop = true;
             this.d20Radio.Text = "d20PFSRD";
             this.d20Radio.UseVisualStyleBackColor = true;
+            // 
+            // aonRadio
+            // 
+            this.aonRadio.AutoSize = true;
+            this.aonRadio.Location = new System.Drawing.Point(7, 20);
+            this.aonRadio.Name = "aonRadio";
+            this.aonRadio.Size = new System.Drawing.Size(109, 17);
+            this.aonRadio.TabIndex = 0;
+            this.aonRadio.TabStop = true;
+            this.aonRadio.Text = "Archive of Nethys";
+            this.aonRadio.UseVisualStyleBackColor = true;
             // 
             // GeneratorWindow
             // 

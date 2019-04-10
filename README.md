@@ -16,4 +16,4 @@ If you have any suggestions or find any bugs with this, please add them to the I
 
 ## Acknowledgements
 All spells, concepts and mechanics found in the spell descriptions belong to Paizo - the world's greatest game designers
-Thanks to AONPRD for providing continued, fantastic docs for Pathfinder!
+Thanks to d20pfsrd & AONPRD for providing continued, fantastic docs for Pathfinder!

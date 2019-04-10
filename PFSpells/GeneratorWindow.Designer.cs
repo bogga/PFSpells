@@ -37,6 +37,10 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.aonRadio = new System.Windows.Forms.RadioButton();
+            this.d20Radio = new System.Windows.Forms.RadioButton();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -61,7 +65,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(18, 251);
+            this.button1.Location = new System.Drawing.Point(18, 297);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 3;
@@ -100,7 +104,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(18, 215);
+            this.checkBox1.Location = new System.Drawing.Point(18, 274);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(158, 17);
             this.checkBox1.TabIndex = 7;
@@ -110,16 +114,50 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(99, 251);
+            this.progressBar1.Location = new System.Drawing.Point(99, 297);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(157, 23);
             this.progressBar1.TabIndex = 8;
             // 
-            // Form1
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.d20Radio);
+            this.groupBox1.Controls.Add(this.aonRadio);
+            this.groupBox1.Location = new System.Drawing.Point(18, 214);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(238, 46);
+            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Data Source";
+            // 
+            // aonRadio
+            // 
+            this.aonRadio.AutoSize = true;
+            this.aonRadio.Location = new System.Drawing.Point(7, 20);
+            this.aonRadio.Name = "aonRadio";
+            this.aonRadio.Size = new System.Drawing.Size(109, 17);
+            this.aonRadio.TabIndex = 0;
+            this.aonRadio.TabStop = true;
+            this.aonRadio.Text = "Archive of Nethys";
+            this.aonRadio.UseVisualStyleBackColor = true;
+            // 
+            // d20Radio
+            // 
+            this.d20Radio.AutoSize = true;
+            this.d20Radio.Location = new System.Drawing.Point(138, 20);
+            this.d20Radio.Name = "d20Radio";
+            this.d20Radio.Size = new System.Drawing.Size(79, 17);
+            this.d20Radio.TabIndex = 1;
+            this.d20Radio.TabStop = true;
+            this.d20Radio.Text = "d20PFSRD";
+            this.d20Radio.UseVisualStyleBackColor = true;
+            // 
+            // GeneratorWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(271, 286);
+            this.ClientSize = new System.Drawing.Size(271, 329);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.textBox2);
@@ -129,9 +167,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
+            this.Name = "GeneratorWindow";
             this.Text = "Spell List Generator";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -147,6 +187,9 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton d20Radio;
+        private System.Windows.Forms.RadioButton aonRadio;
     }
 }
 

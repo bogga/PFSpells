@@ -196,7 +196,14 @@ namespace PFSpells
             writer.WriteLine("<title>" + charName + "</title>");
             InsertHead();
             writer.WriteLine("</head>");
-            writer.WriteLine("<body>");
+
+            if (!d20Radio.Checked)
+                if (darkRadio.Checked)
+                    writer.WriteLine("<body class=\"dark\">");
+                else
+                    writer.WriteLine("<body class=\"light\">");
+            else
+                writer.WriteLine("<body>");
 
             web = new HtmlWeb();
             failedSpells = new List<string>();
@@ -241,6 +248,11 @@ namespace PFSpells
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void aonRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            sourceOptions.Enabled = aonRadio.Checked;
         }
     }
 }

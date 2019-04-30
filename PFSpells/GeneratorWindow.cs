@@ -56,8 +56,9 @@ namespace PFSpells
 
             else
             {
+                writer.WriteLine("<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous'>");
                 writer.WriteLine("<link href='https://aonprd.com/Styles/layout.css' rel='stylesheet' type='text/css' />");
-                writer.WriteLine("<link href='https://aonprd.com/Styles/typography.css' rel='stylesheet' type='text/css' />");
+                writer.WriteLine("<link href='typography.css' rel='stylesheet' type='text/css' />");
                 writer.WriteLine("<link href='https://fonts.googleapis.com/css?family=Julee' rel='stylesheet' type='text/css' />");
                 writer.WriteLine("<link href='http://fonts.googleapis.com/css?family=Julee' rel='stylesheet' type='text/css' />");
             }
@@ -128,10 +129,12 @@ namespace PFSpells
             if (productNode != null)
                 productNode.Remove();
 
+            writer.WriteLine("<div class='container'>");
             int id = Array.FindIndex<string>(spellNames, name => name == spellName);
             writer.WriteLine("<h1 class=\"spell-name\" onclick=\"show(" + id + ")\">" + spellName + "</h1>");
             writer.WriteLine("<div id=" + id + ">");
             spellNode.WriteTo(writer);
+            writer.WriteLine("</div>");
             writer.WriteLine("</div>");
         }
 
@@ -176,9 +179,11 @@ namespace PFSpells
             }
 
             int id = Array.FindIndex<string>(spellNames, name => name == spellName);
+            writer.WriteLine("<div class='container'>");
             writer.WriteLine("<h1 class=\"spell-name\" onclick=\"show(" + id + ")\">" + spellName + "</h1>");
             writer.WriteLine("<div id=" + id + ">");
             spellNode.WriteTo(writer);
+            writer.WriteLine("</div>");
             writer.WriteLine("</div>");
         }
 
